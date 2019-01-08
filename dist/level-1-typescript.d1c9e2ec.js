@@ -104,11 +104,97 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({4:[function(require,module,exports) {
-var Binaries;
-(function (Binaries) {
-    Binaries[Binaries["TRUE"] = 0] = "TRUE";
-    Binaries[Binaries["FALSE"] = 1] = "FALSE";
-})(Binaries || (Binaries = {}));
+var __extends = this && this.__extends || function () {
+    var _extendStatics = function extendStatics(d, b) {
+        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) {
+                if (b.hasOwnProperty(p)) d[p] = b[p];
+            }
+        };
+        return _extendStatics(d, b);
+    };
+    return function (d, b) {
+        _extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var sayPerson = function sayPerson(_a) {
+    var name = _a.name,
+        age = _a.age;
+    console.log(name, age);
+};
+sayPerson({ name: 'Reuben', age: 24 });
+/* enums */
+/* numeric enum */
+var Crud;
+(function (Crud) {
+    Crud[Crud["Create"] = 0] = "Create";
+    Crud[Crud["Retrieve"] = 1] = "Retrieve";
+    Crud[Crud["Update"] = 2] = "Update";
+    Crud[Crud["Delete"] = 3] = "Delete";
+})(Crud || (Crud = {}));
+console.log(Crud.Create);
+/* string enum */
+var Atom;
+(function (Atom) {
+    Atom["Hydrogen"] = "HYDROGEN";
+    Atom["Helium"] = "HELIUM";
+})(Atom || (Atom = {}));
+var sayAtom = function sayAtom(atom) {
+    console.log(atom);
+};
+sayAtom(Atom.Hydrogen);
+/* classes */
+var VehicleType;
+(function (VehicleType) {
+    VehicleType["Electric"] = "ELECTRIC";
+    VehicleType["Combustion"] = "COMBUSTION";
+})(VehicleType || (VehicleType = {}));
+var Car = /** @class */function () {
+    function Car(type) {
+        this.type = type;
+    }
+    Car.prototype.start = function () {
+        switch (this.type) {
+            case VehicleType.Electric:
+                console.log('*silence*');
+                break;
+            case VehicleType.Combustion:
+                console.log('vroom');
+                break;
+            default:
+                break;
+        }
+    };
+    return Car;
+}();
+var tesla = new Car(VehicleType.Electric);
+tesla.start();
+var ElectricCar = /** @class */function (_super) {
+    __extends(ElectricCar, _super);
+    function ElectricCar() {
+        var _this = this;
+        _this._fuelEconomy = 'great';
+        _this.type = VehicleType.Electric;
+        return _this;
+    }
+    Object.defineProperty(ElectricCar.prototype, "fuelEconomy", {
+        get: function get() {
+            console.log(this._fuelEconomy);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return ElectricCar;
+}(Car);
+var modelS = new ElectricCar();
+modelS.start();
+console.log(modelS.fuelEconomy);
 },{}],6:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -138,7 +224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51716' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59991' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
